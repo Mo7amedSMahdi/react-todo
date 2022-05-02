@@ -1,0 +1,52 @@
+main {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section-header {
+  text-align: center;
+}
+
+.tasks {
+  width: 50%;
+}
+
+.add-task {
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.add-task input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.task {
+  padding-block: 0.5rem;
+  border-bottom: 1px solid #000;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task input {
+  flex: 1 0 0;
+}
+
+.task p {
+  flex: 14 0 0;
+}
+
+.task button {
+  flex: 1 0 0;
+}

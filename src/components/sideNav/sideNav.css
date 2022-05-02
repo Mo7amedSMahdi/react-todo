@@ -1,0 +1,63 @@
+header {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.btn--menu {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  z-index: 999;
+}
+
+nav {
+  position: absolute;
+  padding: 4.5rem 2.5rem;
+  background: floralwhite;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 20%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav--side {
+  justify-content: flex-start !important;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.slide-in {
+  animation: slide-in-key 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.slide-out {
+  animation: slide-out-key 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+@keyframes slide-in-key {
+  0% {
+    left: -20%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-key {
+  0% {
+    left: -20%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}

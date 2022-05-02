@@ -1,13 +1,442 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('http://fonts.cdnfonts.com/css/roboto');
+
+:root {
+  /* Colors */
+  --clr-white: #fff;
+  --clr-light: #f9f9f9;
+  --clr-dark: #394149;
+  --clr-gray: rgba(69, 69, 69, 0.2);
+
+  /* font families */
+  --ff-righteous: 'Righteous', cursive;
+  --ff-roboto: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* RESET */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default link style */
+a {
+  color: unset;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: var(--ff-roboto);
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+/* Remove default button styles */
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='search'] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility classes */
+
+.hidden {
+  display: none !important;
+}
+
+.no-scroll {
+  overflow: hidden !important;
+}
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.flex--column {
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+}
+
+.btn--primary {
+  border: 2px solid black;
+}
+
+.btn--icon {
+  display: block;
+  width: 29px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Artworks Section */
+
+.artworks {
+  padding: 1.5rem 4rem;
+}
+
+.artworks-list {
+  grid-template-columns: repeat(3, 1fr);
+  min-height: calc(100vh - 14rem);
+
+  --gap: 2rem;
+}
+
+.artwork {
+  align-items: center;
+  justify-content: flex-start;
+
+  --gap: 1rem;
+
+  padding: 1rem;
+}
+
+.artwork-body {
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+}
+
+.artwork-body h2 {
+  flex: 1.8 0 0;
+}
+
+.body-likes {
+  justify-content: center;
+  align-items: center;
+}
+
+.body-likes p {
+  text-align: center;
+}
+
+.artwork-body button {
+  flex: 0.2 0 0;
+}
+
+.modal {
+  padding: 3rem 4.8rem;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.5);
+  overflow: auto;
+}
+
+.modal-dialog {
+  max-width: 60%;
+  margin-inline: auto;
+}
+
+.close-modal {
+  float: right;
+  margin: 0 1rem;
+}
+
+.header-content {
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  justify-content: center;
+  align-items: center;
+}
+
+.artwork-desc {
+  justify-content: center;
+  align-items: center;
+}
+
+.artwork-desc div {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.comments {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.comment-list {
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.add-comment {
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.add-comment h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.add-comment-form {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.footer {
+  padding: 2rem 3rem;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(88, 84, 84);
+  color: white;
+}
+
+.card-section {
+  padding: 2.5rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+
+  --gap: 3.75rem;
+}
+
+.section-header {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.header-title h2 {
+  font-family: var(--ff-righteous);
+  font-style: normal;
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+}
+
+.header-title h2::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background-color: #000;
+  margin-inline: auto;
+}
+
+.link-desktop {
+  display: none;
+}
+
+.header-link {
+  font-family: var(--ff-righteous);
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  justify-content: center;
+  align-items: center;
+
+  --gap: 0.5rem;
+}
+
+.header-link a::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 3px;
+  background-color: #000;
+}
+
+.card-list {
+  grid-template-columns: repeat(1, 1fr);
+
+  --gap: 2rem;
+}
+
+.card {
+  --gap: 1rem;
+
+  background: #fff;
+}
+
+.card-header {
+  position: relative;
+  height: 120vw;
+  width: 100%;
+  max-height: 75vh;
+}
+
+.card-header img {
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.card-body h3 {
+  font-family: var(--ff-righteous);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+
+.card-body h3::after {
+  content: '';
+  display: block;
+  width: 35%;
+  height: 2px;
+  background-color: #000;
+}
+
+.card-body p {
+  font-family: var(--ff-roboto);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.card-body span {
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .card-section {
+    padding: 4.5rem 2.5rem;
+
+    --gap: 3.75rem;
+  }
+
+  .section-header {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .link-desktop {
+    display: inline-flex;
+  }
+
+  .link-mobile {
+    display: none;
+  }
+
+  .card-list {
+    grid-template-columns: repeat(2, 1fr);
+
+    --gap: 2rem;
+  }
+
+  .card-header {
+    max-height: 50vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .card-section {
+    padding: 6.875rem 4.875rem;
+  }
+
+  .card-list {
+    grid-template-columns: repeat(3, 1fr);
+
+    --gap: 2rem;
+  }
 }
